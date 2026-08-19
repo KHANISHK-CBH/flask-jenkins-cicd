@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Executing Unit Tests...'
+                sh 'python3 -m unittest discover -s . -p "test_*.py"'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker Image...'
+                sh 'docker build -t khanishk1/flask-jenkins-app:v1 .'
+            }
+        }
+
+        stage('Deploy App') {
+            steps {
+                echo 'Deploying Flask Container...'
+                sh 'docker run -d -p 5001:5000 --name running-flask-app khanishk1/flask-jenkins-app:v1'
+            }
+        }
+    }
+}
