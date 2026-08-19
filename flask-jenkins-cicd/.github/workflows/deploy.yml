@@ -31,6 +31,6 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: .
+         context: ./flask-jenkins-cicd
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker_khanishk1:latest
