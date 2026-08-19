@@ -33,4 +33,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-jenkins-app:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker_khanishk1:latest
